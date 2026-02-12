@@ -27,9 +27,17 @@ jobs:
                       const prUrl = '${{ github.event.pull_request.html_url }}';
 
                       const subject = 'New Pull Request: ' + prTitle;
-                      const body = 'A new pull request has been submitted to community-notebooks!\n\nTitle: ' + prTitle + '\nAuthor: ' + prAuthor + '\nDescription: ' + prBody + '\n\nView PR: ' + prUrl + '\n\n---\nThis is an automated notification from the community-notebooks repository.';
+                      const htmlBody = '<html><body style="font-family: Arial, sans-serif;">' +
+                          '<p><strong>A new pull request has been submitted to community-notebooks!</strong></p>' +
+                          '<p><strong>Title:</strong><br>' + prTitle + '</p>' +
+                          '<p><strong>Author:</strong><br>' + prAuthor + '</p>' +
+                          '<p><strong>Description:</strong><br>' + prBody + '</p>' +
+                          '<p><a href="' + prUrl + '">View PR: ' + prUrl + '</a></p>' +
+                          '<hr>' +
+                          '<p><small>This is an automated notification from the community-notebooks repository.</small></p>' +
+                          '</body></html>';
 
-                      const payload = JSON.stringify({ subject: subject, originalTextBody: body });
+                      const payload = JSON.stringify({ subject: subject, originalHtmlBody: htmlBody });
 
                       const options = {
                           hostname: 'api.gaggle.email',
