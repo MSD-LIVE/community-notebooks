@@ -14,3 +14,5 @@ To enable PR notifications via Gaggle, you'll need to configure the following Gi
 2. Navigate to Secrets and Variables → Actions
 3. Click "New repository secret"
 4. Add each of the above secrets with their respective values
+
+Test PRs emails
